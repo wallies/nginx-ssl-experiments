@@ -14,7 +14,7 @@ services:
       - "8080:8000"
       - "443:4430"
     volumes:
-      - ./sites-enabled:/sites-enabled
+      - ./sites-enabled/dev:/sites-enabled
       - ./conf:/conf.d
       - ./log:/var/log/nginx
       - ./certs:/certs

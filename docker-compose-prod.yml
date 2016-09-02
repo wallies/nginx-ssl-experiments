@@ -1,0 +1,25 @@
+version: '2'
+services:
+  ghost:
+    ports:
+      - "127.0.0.1:2368:2368"
+    volumes:
+    - /var/lib/ghost:/var/lib/ghost
+    command: "npm start --production"
+    mem_limit: 256M
+    memswap_limit: 512M
+    security_opt:
+      - seccomp: seccomp.json
+  nginx:
+    image: wonderfall/nginx:latest
+    ports:
+      - "8080:8000"
+      - "443:4430"
+    volumes:
+      - ./sites-enabled/prod:/sites-enabled
+      - ./conf:/conf.d
+      - ./certs:/certs
+      - /etc/letsencrypt/blog.:/etc/letsencrypt
+    restart: always
+    security_opt:
+      - seccomp: seccomp.json

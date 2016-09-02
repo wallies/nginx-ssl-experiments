@@ -3,15 +3,7 @@ services:
   ghost:
     image: ghost:0.9.0
     container_name: ghost
-    ports:
-      - "127.0.0.1:2368:2368"
-    volumes:
-    - /var/lib/ghost:/var/lib/ghost
-    command: "npm start --production"
     restart: always
-    mem_limit: 256M
-    memswap_limit: 512M
-
   nginx:
     image: wonderfall/nginx:latest
     container_name: nginx
@@ -20,10 +12,4 @@ services:
     ports:
       - "8080:8000"
       - "443:4430"
-    volumes:
-      - ./sites-enabled:/sites-enabled
-      - ./conf:/conf.d
-      - ./log:/var/log/nginx
-      - ./certs:/certs
-      - /etc/letsencrypt:
-
+    restart: always
