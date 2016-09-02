@@ -11,10 +11,6 @@ services:
     security_opt:
       - seccomp: seccomp.json
   nginx:
-    image: wonderfall/nginx:latest
-    ports:
-      - "8080:8000"
-      - "443:4430"
     volumes:
       - ./sites-enabled/prod:/sites-enabled
       - ./conf:/conf.d

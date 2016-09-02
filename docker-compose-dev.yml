@@ -1,18 +1,9 @@
 version: '2'
 services:
   ghost:
-    image: ghost:0.9.0
-    container_name: ghost
     ports:
       - "2368:2368"
   nginx:
-    image: wonderfall/nginx:latest
-    container_name: nginx
-    links:
-      - ghost
-    ports:
-      - "8080:8000"
-      - "443:4430"
     volumes:
       - ./sites-enabled/dev:/sites-enabled
       - ./conf:/conf.d
