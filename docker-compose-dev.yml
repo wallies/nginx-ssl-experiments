@@ -9,4 +9,5 @@ services:
       - ./conf:/conf.d
       - ./log:/var/log/nginx
       - ./certs:/certs
+      - ./html:/www
 

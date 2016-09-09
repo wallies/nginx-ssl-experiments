@@ -14,7 +14,7 @@ services:
     volumes:
       - ./sites-enabled/prod:/sites-enabled
       - ./conf:/conf.d
-      - /etc/letsencrypt/live.:/certs
+      - ./certs/live.:/certs
     restart: always
     security_opt:
       - seccomp: seccomp.json
